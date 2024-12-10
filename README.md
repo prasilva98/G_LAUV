@@ -50,7 +50,7 @@ To start replaying the logs you can use the ``bridge_launch.py``, which should t
 ros2 launch replay_logs bridge_launch.py
 ```
 
-Your LAUV shuld be moving by now in the simulation!! 
+Your LAUV should be moving by now in the simulation!! 
 
  
 
