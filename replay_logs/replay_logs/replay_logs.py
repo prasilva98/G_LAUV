@@ -22,11 +22,6 @@ MAX_RPM = 2500
 def max_rpm_to_rads(mag):
   return MAX_RPM*mag * (2*math.pi / 60)
 
-# Function to merge dataframe every 4 rows
-def merge_every_n_rows(df, n):
-    merged = df.groupby(df.index // n).agg(lambda x: x.first_valid_index() if x.isnull().all() else x.dropna().iloc[0])
-    return merged
-
 class LogReplayer(Node):
 
   def __init__(self):
@@ -41,8 +36,6 @@ class LogReplayer(Node):
     self.i_act = 0
 
     self.df_actuators = pd.read_csv('/mnt/sdb1/ros2_ws/log/actuators.csv')
-    # This should be done before publishing the csv
-    self.df_actuators = merge_every_n_rows(self.df_actuators, 4)
     print(self.df_actuators)
 
     # Create subscribers and publishers
@@ -76,11 +69,6 @@ class LogReplayer(Node):
         # Reset accumulated time difference
         self.accumulated_sim_time = 0
         self.publish_data()
-
-      else: 
-        self.get_logger().info("## Not big enough ##")
-
-
 
     # First iteration
     else: 
