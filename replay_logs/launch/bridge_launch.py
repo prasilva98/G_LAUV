@@ -20,7 +20,7 @@ def generate_launch_description():
         description='Path to the configuration file for parameter_bridge'
     )
     
-    # Bridge
+    # Bridge Node
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
@@ -30,7 +30,14 @@ def generate_launch_description():
         output='screen'
     )
 
+    replay_logs = Node(
+        package='replay_logs',
+        executable='replay',
+        output='screen'
+    )
+
     return LaunchDescription([
         config_file_arg,
-        bridge
+        bridge,
+        replay_logs
     ])
