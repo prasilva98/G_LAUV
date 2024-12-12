@@ -34,7 +34,7 @@ class LogReplayer(Node):
 
     self.accumulated_sim_time = 0
     self.i_act = 0
-    self.df_actuators = pd.read_csv('/home/developer/lrauv_ws/src/G_LAUV/logs/actuator.csv')
+    self.df_actuators = pd.read_csv('/home/developer/lrauv_ws/src/G_LAUV/logs/actuactor.csv')
     print(self.df_actuators)
 
     # Create subscribers and publishers
