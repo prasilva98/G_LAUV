@@ -40,4 +40,20 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 ```
 
+Launch any gazebo world that includes a tethys LAUV. For example. in the [LRAUV_Gazebo_Plugins](https://github.com/osrf/lrauv/tree/main/lrauv_gazebo_plugins) worlds folder you can launch ```tethys_at_empty_environment.sdf```, like so:
+```
+gz sim tethys_at_empty_environment.sdf
+```
+
+To start replaying the logs you can use the ``bridge_launch.py``, which should take the csv with the actuators inputs and use it to feed the simulation inputs. As explained, it does this through the ROS<->Gazebo Bridge, so this launch file creates 2 nodes, the bridge and the replayer.
+```
+ros2 launch replay_logs bridge_launch.py
+```
+
+Your LAUV should be moving by now in the simulation!! 
+
+ 
+
+
+
 
